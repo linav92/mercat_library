@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   put 'api/books/:id', to: 'book#edit'
   post 'api/books', to: 'book#create'
   delete 'api/books/:id', to: 'book#destroy'
+
+  post 'api/lendings', to: 'lending#libro_prestado'
+  post 'api/returneds', to: 'returned#libro_devuelto'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
