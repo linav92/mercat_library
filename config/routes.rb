@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  get 'book/books', to: 'book#index'
-  get 'book/books/:id', to: 'book#show'
-  put 'book/books/:id', to: 'book#edit'
-  post 'book/books', to: 'book#create'
-  put 'book/books/:id', to: 'book#update'
-  delete 'book/books/:id', to: 'book#destroy'
+  get 'api/users', to: 'user#index'
+  get 'api/users/:id', to: 'user#show'
+  post 'api/users', to: 'user#create'
+  put  'api/users/:id', to: 'user#edit'
+  delete 'api/users/:id', to: 'user#destroy'
+
+  
+  get 'api/books', to: 'book#index'
+  get 'api/books/:id', to: 'book#show'
+  put 'api/books/:id', to: 'book#edit'
+  post 'api/books', to: 'book#create'
+  delete 'api/books/:id', to: 'book#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
