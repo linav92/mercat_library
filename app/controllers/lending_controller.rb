@@ -1,5 +1,6 @@
 class LendingController < ApplicationController
     skip_before_action :verify_authenticity_token
+
     def libro_prestado
         #buscar si existe el libro
         id = params[:book_id]
@@ -26,7 +27,10 @@ class LendingController < ApplicationController
         @book.lending_at = Time.now.strftime("%F %H:%M")
         @book.expire = Time.now + 10.days
         @book.save
-        return render json: @book
+        mailer = ApplicationMailer.welcome_email(@book )
+        mailer_response = mailer.deliver_now
+        mailgun_message_id = mailer_response.message_id
+        return render json: @book, include: ['book','user']
 
     end
 end

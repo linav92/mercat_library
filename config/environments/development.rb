@@ -73,4 +73,14 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  Mailgun.configure do |config|
+    config.api_key = 'key-c55ea4e2b55cc5d430a4dbf73fd9546f'
+  end
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: 'key-c55ea4e2b55cc5d430a4dbf73fd9546f',
+    domain: 'sandbox9ba22cd599ad47008a7b6b3cf4eb0aa5.mailgun.org',
+    # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
+  }
 end

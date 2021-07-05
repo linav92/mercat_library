@@ -12,7 +12,7 @@ class ReturnedController < ApplicationController
         #ver el estado
        
         @book = UserBook.find_by(book_id: id)
-        if @book != nil || @book.status == 1
+        if @book == nil || @book.status == 1
             return render json:{
                 status: "El libro se encuentra devuelto"
             }
@@ -26,6 +26,6 @@ class ReturnedController < ApplicationController
         @book.book_id = params[:book_id]
         @book.returned_at = Time.now
         @book.save
-        return render json: @book
+        return render json: @book, include: ['book','user']
     end
 end

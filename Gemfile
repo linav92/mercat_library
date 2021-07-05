@@ -24,7 +24,12 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+#04/07/2021
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'faker'
+gem 'rspec-rails'
+gem 'rails-controller-testing'
+gem 'mailgun-ruby', '~>1.2.4'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
