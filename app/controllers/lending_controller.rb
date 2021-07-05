@@ -3,7 +3,7 @@ class LendingController < ApplicationController
     def libro_prestado
         #buscar si existe el libro
         id = params[:book_id]
-        @books = Book.find_by(id: id)
+        @books = Book.where(status:0).find_by(id: id)
         if @books == nil
             return render json:{
                 status: "El libro no existe"
