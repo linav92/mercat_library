@@ -26,6 +26,9 @@ class LendingController < ApplicationController
         @book.lending_at = Time.now.strftime("%F %H:%M")
         @book.expire = Time.now + 10.days
         @book.save
+        mailer = ApplicationMailer.welcome_email(@book )
+        mailer_response = mailer.deliver_now
+        mailgun_message_id = mailer_response.message_id
         return render json: @book
 
     end
