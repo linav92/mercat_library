@@ -81,6 +81,9 @@ test:
 #
 production:
   <<: *default
-  database: library_production
-  username: library
-  password: <%= ENV['LIBRARY_DATABASE_PASSWORD'] %>
+  database: mercat
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  sslmode: "require"

@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mercat
+spec:
+  selector:
+    matchLabels:
+      run: mercat
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: mercat
+    spec:
+      containers:
+      - name: mercat
+        image: 1037619/mercat
+        env:
+        - name: RAILS_SERVE_STATIC_FILES
+          value: "true" 
+        - name: RAILS_ENV
+          value: "production"
+        - name: DB_USER
+          value: "doadmin" 
+        - name: DB_PASSWD
+          value: "y0sisku0kog83qjt"
+        - name: DB_HOST
+          value: "mercat-do-user-9486097-0.b.db.ondigitalocean.com" 
+        - name: DB_PORT
+          value: "25060"
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mercat
+  labels:
+    run: mercat
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    run: mercat
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mercat
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: mercat
+            port:
+              number: 80
