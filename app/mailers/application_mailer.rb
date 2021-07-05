@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'noresponder@bizzx.com'
+  default from: 'noresponder@mercat.com'
   layout 'mailer'
 
   def welcome_email(book)
